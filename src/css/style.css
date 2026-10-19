@@ -1,0 +1,144 @@
+/* Global styles (RTL template) */
+/* Design Tokens based on brand guide */
+
+:root {
+  --color-midnight: #0B1D3A;
+  --color-gold: #C8A45C;
+  --color-gold-hover: #b8934b;
+  --color-teal: #14B8A6;
+  --color-warm-white: #FAF8F5;
+  --color-soft-sand: #E8DFD0;
+  --color-charcoal: #1E293B;
+  --color-slate: #64748B;
+  
+  --primary-color: #C8A45C;
+  --secondary-color: #0B1D3A;
+  
+  --font-heading: 'Cairo', 'Poppins', sans-serif;
+  --font-body: 'Tajawal', 'Inter', sans-serif;
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-warm-white);
+  background-color: var(--color-midnight);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1D3A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8A45C;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8934b;
+}
+
+/* Firefox scrollbar */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #C8A45C #0B1D3A;
+}
+
+/* Preloader transition */
+#preloader {
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Radial Glow & Background effects */
+.bg-mesh-glow {
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(200, 164, 92, 0.14) 0%, transparent 55%),
+    radial-gradient(circle at 85% 70%, rgba(20, 184, 166, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(200, 164, 92, 0.07) 0%, transparent 50%);
+}
+
+/* Elegant Gold Gradient Text - with padding to prevent clipping of Arabic diacritics */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF5DF 0%, #D4B26F 45%, #A8863E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-top: 0.12em;
+  padding-bottom: 0.18em;
+  line-height: inherit;
+}
+
+/* Luxury Glass Card */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 164, 92, 0.22);
+}
+
+.glass-panel-subtle {
+  background: rgba(11, 29, 58, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(232, 223, 208, 0.12);
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 3s infinite;
+}
